@@ -1,0 +1,23 @@
+# Usa Node para construir el frontend
+FROM node:20
+
+# Directorio de trabajo en el contenedor
+WORKDIR /app
+
+# Copia solo los archivos de configuración primero
+COPY package*.json ./
+
+# Instala dependencias
+RUN npm install
+
+# Copia el resto del código
+COPY . .
+
+# Construye el proyecto
+RUN npm run build
+
+# Instala serve para producción
+RUN npm install -g serve
+
+# Usa serve para servir la app
+CMD ["serve", "-s", "dist", "-l", "3000"]
