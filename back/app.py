@@ -5,11 +5,11 @@ import io
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+#@app.route("/")
+#def hello_world():
+#    return "<p>Hello, World!</p>"
 
-@app.get('/upload')
+@app.get("/")
 def upload():
     return render_template('upload.html')
 
