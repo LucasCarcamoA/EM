@@ -3,14 +3,12 @@ FROM node:20
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json package-lock.json ./
+
 RUN npm install
 
 COPY . .
-COPY tsconfig*.json ./
-COPY src ./src
 
 EXPOSE 5173
 
-# Usa Vite para desarrollo
 CMD ["npm", "run", "dev"]
