@@ -2,6 +2,7 @@ from flask import Flask, send_file, render_template, request, redirect, url_for
 import pandas as pd
 from openpyxl import load_workbook
 import io
+import os
 
 app = Flask(__name__)
 
@@ -24,6 +25,7 @@ def view():
     try:
         df1 = pd.read_excel(file1, engine='openpyxl')
         df2 = pd.read_excel(file2, engine='openpyxl')
+        excel_file = pd.read_excel(file1, engine='openpyxl')
     except Exception as e:
         return f"Error al procesar los archivos: {str(e)}", 400
 
@@ -45,7 +47,7 @@ def view():
     </div>
     </body>
     </html>
-    """
+    """, print(excel_file.columns), print(excel_file.dtypes) #print(excel_file.head())  #print(excel_file.info()) #print(excel_file.describe())
 
 
 
