@@ -8,15 +8,8 @@
 
 1. Build and Run the image/container
 
-### With Docker-Compose
-
 ```bash
 docker compose up -d
-```
-### With Makefile
-
-```bash
-make super
 ```
 
 2. Go to 'localhost:8080' for backend view or 'localhost:5173' for frontend view
