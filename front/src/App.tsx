@@ -1,9 +1,8 @@
-import "./app.css";
 
 function App() {
   return (
     <div className="app">
-      <h1>Hola Mundo</h1>
+      <h1 className="bg-amber-500 w-2xl" >Hola Mundo</h1>
     </div>
   );
 }
