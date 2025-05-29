@@ -1,3 +1,35 @@
 @import "tailwindcss";
 
-@theme {  --color-mint-500: oklch(0.72 0.11 178);}
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: rgb(47, 50, 63);
+  --color-secondary: rgb(100, 100, 124);
+  --color-accent: rgb(196, 159, 59);
+  --color-muted: rgb(74, 78, 95);
+  --color-dark: rgb(30, 32, 42);
+  --color-success: rgb(75, 155, 70);
+  --color-warning: rgb(224, 180, 80);
+  --color-error: rgb(160, 50, 50);
+
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Playfair Display", serif;
+  --font-mono: "Fira Code", monospace;
+
+  --spacing-section: 4rem;
+  --spacing-1_2screen: 50vh;
+  --spacing-full-screen: 100vh;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-strong: 0 6px 24px rgba(0, 0, 0, 0.2);
+
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+}
