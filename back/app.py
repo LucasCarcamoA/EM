@@ -1,4 +1,4 @@
-from flask import Flask, send_file, render_template, request, redirect, url_for
+from flask import Flask, send_file, render_template, request, redirect, url_for, jsonify
 import pandas as pd
 import openpyxl
 from openpyxl import load_workbook
@@ -33,34 +33,41 @@ def test():
             cell_location = cell.coordinate
 
             if current_cell_value != data_sheet2[cell_location].value:
-                print(data_sheet2[cell_location])
+                print(data_sheet2[cell_location].coordinate) #Enviar - celda con las diferencias
     try:
-        df1 = pd.read_excel(data_file1, engine='openpyxl')
+        df1 = pd.read_excel(data_file1, engine='openpyxl') #Enviar
         df2 = pd.read_excel(data_file2, engine='openpyxl')
         excel_file = pd.read_excel(file1, engine='openpyxl')
     except Exception as e:
         return f"Error al procesar los archivos: {str(e)}", 400
 
+    #Posibilidad de enviar las coordenadas y los datos en json con las diferencias clave:valor = coordenadas:valor
+    #crear el json en una carpeta
+    #crear una base de datos que almacene el json
+    #y enviar el json al frontend para que se muestre en una tabla
+    #return jsonify({"file1": df1.to_dict(), "file2": df2.to_dict()})
 
-    return f"""
-    <html>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-    <head><title>Vista de archivos Excel</title></head>
-    <body>
-    <div class="row">
-    <div class="col-md-5">
-    <h2>Contenido del archivo 1: {file1.filename}</h2>
-    {df1.to_html(classes="table table-striped table-hover table-bordered")}
-    </div>
-    <div class="col-md-5">
-    <h2>Contenido del archivo 2: {file2.filename}</h2>
-    {df2.to_html(classes="table table-striped table-hover table-bordered")}
-    </div>
-    </div>
-    </body>
-    </html>
-    """
+    #return f"""
+    #<html>
+    #<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    #<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    #<head><title>Vista de archivos Excel</title></head>
+    #<body>
+    #<div class="row">
+    #<div class="col-md-5">
+    #<h2>Contenido del archivo 1: {file1.filename}</h2>
+    #{df1.to_html(classes="table table-striped table-hover table-bordered")}
+    #</div>
+    #<div class="col-md-5">
+    #<h2>Contenido del archivo 2: {file2.filename}</h2>
+    #{df2.to_html(classes="table table-striped table-hover table-bordered")}
+    #</div>
+    #</div>
+    #</body>
+    #</html>
+    #"""
+    
+    return jsonify({"file1": df1.to_dict(), "file2": df2.to_dict()}) # print(excel_file.columns), print(excel_file.dtypes) #print(excel_file.head())  #print(excel_file.info()) #print(excel_file.describe())
 
 
 
