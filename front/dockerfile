@@ -6,7 +6,10 @@ COPY package.json package-lock.json ./
 
 COPY . .
 
-RUN npm install
+RUN npm install tailwindcss @tailwindcss/vite && \
+    npm install
+
+COPY . .
 
 EXPOSE 5173
 
