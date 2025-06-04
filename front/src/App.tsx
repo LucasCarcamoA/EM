@@ -1,13 +1,11 @@
 import { Header } from "./layout/Header";
-// import { AppRouter } from "./router/AppRouter";
-import { UploadFilesPage } from "./pages/UploadFilesPage";
+import { AppRouter } from "./router/AppRouter";
 
 function App() {
   return (
     <div className="app h-full-screen bg-secondary">
       <Header />
-      {/* <AppRouter /> */}
-      <UploadFilesPage />
+      <AppRouter />
     </div>
   );
 }

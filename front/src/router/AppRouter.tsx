@@ -8,7 +8,7 @@ export const AppRouter = () => {
       <Route path="/compare" element={<DiffViewerPage />} />
       <Route path="/result" element={<MergeResultPage />} />
 
-      <Route path={"/*"} element={<Navigate to={"upload"} />} />
+      <Route path={"*"} element={<Navigate to={"upload"} />} />
     </Routes>
   );
 };
