@@ -1,14 +1,17 @@
-FROM node:20-slim
+FROM node:20-alpine
 
 WORKDIR /app
 
-COPY . .
+COPY package*.json .
 
-RUN rm -rf node_modules package-lock.json 
+RUN rm -rf node_modules && \
+    rm -rf package-lock.json
 
 RUN npm install
 
 
-EXPOSE 5173
+COPY . .
+
+EXPOSE 3000
 
 CMD ["npm", "run", "dev"]
