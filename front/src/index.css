@@ -14,7 +14,8 @@
   --font-display: "Playfair Display", serif;
   --font-mono: "Fira Code", monospace;
 
-  --spacing-section: 4rem;
+  --spacing-component: 1rem 1.5rem;
+  --spacing-section: 1.5rem 2.5rem;
   --spacing-1_2screen: 50vh;
   --spacing-full-screen: 100vh;
 
